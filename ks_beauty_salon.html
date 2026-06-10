@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KS美容室 | 神戸・岡本</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --beige: #F5F0E8;
+    --beige-dark: #E8DFD0;
+    --beige-mid: #D4C5B0;
+    --brown: #8B7355;
+    --brown-dark: #5C4A32;
+    --green: #7A8C6E;
+    --green-light: #E8EDE4;
+    --text: #3A3028;
+    --text-mid: #6B5D4F;
+    --text-light: #9A8C7E;
+    --white: #FDFAF6;
+  }
+
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', Georgia, serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  /* ヘッダー */
+  header {
+    background: var(--beige);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--beige-mid);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--brown-dark);
+    font-weight: 400;
+  }
+
+  .logo span {
+    font-size: 0.75rem;
+    display: block;
+    letter-spacing: 0.2em;
+    color: var(--text-mid);
+    margin-top: 2px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-left: 2rem;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+  }
+
+  nav a:hover { color: var(--brown); }
+
+  /* ヒーロー */
+  .hero {
+    background: var(--beige);
+    padding: 6rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 70% 50%, var(--green-light) 0%, transparent 60%);
+    opacity: 0.5;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--green);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--brown-dark);
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--text-mid);
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--brown);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--brown-dark); }
+
+  /* セクション共通 */
+  section { padding: 5rem 2rem; }
+
+  .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--green);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--brown-dark);
+    margin-bottom: 2.5rem;
+  }
+
+  /* コンセプト */
+  .concept {
+    background: var(--white);
+  }
+
+  .concept-text {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 2.2;
+    border-left: 2px solid var(--beige-mid);
+    padding-left: 1.5rem;
+  }
+
+  /* メニュー */
+  .menu { background: var(--beige); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .menu-card {
+    background: var(--white);
+    padding: 1.8rem 1.5rem;
+    border: 1px solid var(--beige-mid);
+  }
+
+  .menu-card-name {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: var(--brown-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-card-price {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 1.4rem;
+    color: var(--brown);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .menu-card-price span {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-left: 4px;
+  }
+
+  .menu-note {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  /* よくある質問 */
+  .faq { background: var(--white); }
+
+  .faq-item {
+    border-top: 1px solid var(--beige-dark);
+    padding: 1.5rem 0;
+  }
+
+  .faq-item:last-child { border-bottom: 1px solid var(--beige-dark); }
+
+  .faq-q {
+    font-size: 0.95rem;
+    color: var(--brown-dark);
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .faq-q-mark {
+    font-family: Georgia, serif;
+    color: var(--green);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .faq-a {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    padding-left: 1.75rem;
+  }
+
+  /* アクセス */
+  .access { background: var(--beige); }
+
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 600px) {
+    .access-grid { grid-template-columns: 1fr; }
+    nav { display: none; }
+  }
+
+  .access-info dt {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--text-light);
+    margin-top: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .access-info dt:first-child { margin-top: 0; }
+
+  .access-info dd {
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .map-placeholder {
+    background: var(--beige-dark);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* フッター */
+  footer {
+    background: var(--brown-dark);
+    color: var(--beige);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+
+  footer .footer-name {
+    font-family: 'Hiragino Mincho ProN', serif;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  footer p { color: var(--beige-mid); margin-top: 0.25rem; }
+
+  .demo-badge {
+    display: inline-block;
+    background: var(--beige-dark);
+    color: var(--text-light);
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    KS 美容室
+    <span>KOBE STYLE HAIR SALON</span>
+  </div>
+  <nav>
+    <a href="#concept">コンセプト</a>
+    <a href="#menu">メニュー</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#access">アクセス</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">NATURAL BEAUTY &amp; RELAX</span>
+    <h1>自然の美しさと<br>リラックスをご提供する</h1>
+    <p>神戸・岡本のオーガニック美容室</p>
+    <a href="#menu" class="btn-primary">メニューを見る</a>
+  </div>
+</section>
+
+<section class="concept" id="concept">
+  <div class="section-inner">
+    <span class="section-label">Concept</span>
+    <h2 class="section-title">自然素材で、本来の美しさへ</h2>
+    <p class="concept-text">
+      KS美容室は、神戸・岡本の地で「自然の美しさとリラックス」をコンセプトに営業しています。<br>
+      オーガニックの素材にこだわり、髪と頭皮にやさしい施術を心がけています。<br>
+      日常の喧騒を離れ、ゆったりとした時間をお過ごしください。
+    </p>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <span class="section-label">Menu &amp; Price</span>
+    <h2 class="section-title">メニュー・料金</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <p class="menu-card-name">オーガニックカラー</p>
+        <p class="menu-card-price">¥6,600<span>（税込）</span></p>
+      </div>
+      <div class="menu-card">
+        <p class="menu-card-name">デザインカット</p>
+        <p class="menu-card-price">¥6,600<span>（税込）</span></p>
+      </div>
+      <div class="menu-card">
+        <p class="menu-card-name">コース</p>
+        <p class="menu-card-price" style="font-size:1rem; color: var(--text-light);">詳細はご予約時に<br>ご案内いたします</p>
+      </div>
+    </div>
+    <p class="menu-note">※価格はすべて税込表示です。施術内容により異なる場合がございます。</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+
+    <div class="faq-item">
+      <p class="faq-q"><span class="faq-q-mark">Q</span>子供のカットはできますか？</p>
+      <p class="faq-a">カット椅子に一人で座れるのが一番よいのですが、お母様に抱っこされながらのカットも可能な場合がございます。詳細はお問い合わせください。</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q"><span class="faq-q-mark">Q</span>ペット同伴でも利用できますか？</p>
+      <p class="faq-a">はい、大丈夫です。</p>
+    </div>
+
+    <div class="faq-item">
+      <p class="faq-q"><span class="faq-q-mark">Q</span>キャッシュレス決済は利用できますか？</p>
+      <p class="faq-a">クレジットカードや交通系・QRコード系の決済は一部を除いて可能になっています。詳しくは店内にてお伺いください。</p>
+    </div>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="section-inner">
+    <span class="section-label">Access</span>
+    <h2 class="section-title">アクセス</h2>
+    <div class="access-grid">
+      <dl class="access-info">
+        <dt>店舗名</dt>
+        <dd>KS美容室</dd>
+        <dt>住所</dt>
+        <dd>〒658-0072<br>兵庫県神戸市東灘区岡本1丁目1-1</dd>
+        <dt>電話</dt>
+        <dd>078-123-4567</dd>
+        <dt>営業時間</dt>
+        <dd>10:00 〜 20:00</dd>
+        <dt>定休日</dt>
+        <dd>毎週月曜日</dd>
+      </dl>
+      <div class="map-placeholder">Google Map</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-name">KS 美容室</p>
+  <p>〒658-0072 兵庫県神戸市東灘区岡本1丁目1-1</p>
+  <p>TEL 078-123-4567　／　定休日：毎週月曜日</p>
+  <span class="demo-badge">※ これはデモ用サンプルサイトです</span>
+</footer>
+
+</body>
+</html>
